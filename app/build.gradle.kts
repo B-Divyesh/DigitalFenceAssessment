@@ -1,5 +1,8 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.ksp)
 }
@@ -33,6 +36,10 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
 
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+
     buildFeatures {
         compose = true
     }
@@ -45,7 +52,7 @@ ksp {
 
 dependencies {
     val nav_version = "2.8.3"
-    // Upgrading Room to 2.7.0-alpha11 to fix Kotlin 2.0 KSP compatibility issues
+    // Using 2.7.0-alpha11 for Kotlin 2.0 + KSP compatibility
     val room_version = "2.7.0-alpha11"
 
     // Room
@@ -80,4 +87,10 @@ dependencies {
 
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+}
+
+tasks.withType<KotlinCompile>().configureEach {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
 }
