@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">ShopListApp</string>
+    <string name="update_list">Update List</string>
+    <string name="add_List">Add List</string>
+</resources>
