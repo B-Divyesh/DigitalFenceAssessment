@@ -9,33 +9,46 @@
 - To edit an item simply click on the existing item
 - To Mark the item as purchesed you can tap on the chackbox to mark it.
 
-mermaid
-graph TD
-    subgraph UI_Layer
-        MainActivity --> Navigation
-        Navigation --> HomeView
-        Navigation --> AddEditView
-        HomeView --> AppBar
-        AddEditView --> AppBar
-    end
+## Architecture
+┌──────────────────────────────┐
+│         Views / UI           │  ← Jetpack Compose Screens
+│  (HomeView, AddEditView)     │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│          ViewModel           │  ← Manages UI state & logic
+│     (shopListViewModel)      │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│          Repository          │  ← Abstracts data access
+│     (shopListRepository)     │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│      Database (Room)         │  ← Local SQLite storage
+│    (shopListDao → shopList)  │
+└──────────────────────────────┘
 
-    subgraph Logic_Layer
-        HomeView --> shopListViewModel
-        AddEditView --> shopListViewModel
-        shopListViewModel --> Graph[Graph Service Locator]
-    end
-
-    subgraph Data_Layer
-        Graph --> shopListRepository
-        shopListRepository --> shopListDao
-        shopListDao --> ShopListDatabase[(Room Database)]
-        shopListDao --> shopList[Entity: shopList]
-    end
 
 ## Features
 1. Simple Utilitarian UI nothing fancy
 2. Easy to perform actions
 3. Timestamps: To check when the Item was added
+
+## Future Deliverables
+- Integrate Advanced sorting
+- Implement Folders, to organise lists into their own category
+- Delete All feature
+- Undo Action Button
+- Location feature: Best possible place to purchase the item at the lowest price from the closest place.
+
+## Assumptions Made / Trade Offs
+- Accidental delete may be frequent due to the swipe to delete feature
+- We assume the user takes the most ideal gestures
 
 ## IMPORTANT NOTE
 
