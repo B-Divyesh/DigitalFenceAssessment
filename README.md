@@ -9,6 +9,29 @@
 - To edit an item simply click on the existing item
 - To Mark the item as purchesed you can tap on the chackbox to mark it.
 
+  mermaid
+graph TD
+    subgraph UI_Layer
+        MainActivity --> Navigation
+        Navigation --> HomeView
+        Navigation --> AddEditView
+        HomeView --> AppBar
+        AddEditView --> AppBar
+    end
+
+    subgraph Logic_Layer
+        HomeView --> shopListViewModel
+        AddEditView --> shopListViewModel
+        shopListViewModel --> Graph[Graph Service Locator]
+    end
+
+    subgraph Data_Layer
+        Graph --> shopListRepository
+        shopListRepository --> shopListDao
+        shopListDao --> ShopListDatabase[(Room Database)]
+        shopListDao --> shopList[Entity: shopList]
+    end
+
 ## Features
 1. Simple Utilitarian UI nothing fancy
 2. Easy to perform actions
