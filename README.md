@@ -10,6 +10,7 @@
 - To Mark the item as purchesed you can tap on the chackbox to mark it.
 
 ## Architecture
+```
 ┌──────────────────────────────┐
 │         Views / UI           │  ← Jetpack Compose Screens
 │  (HomeView, AddEditView)     │
@@ -32,6 +33,7 @@
 │      Database (Room)         │  ← Local SQLite storage
 │    (shopListDao → shopList)  │
 └──────────────────────────────┘
+```
 
 
 ## Features
