@@ -9,7 +9,7 @@
 - To edit an item simply click on the existing item
 - To Mark the item as purchesed you can tap on the chackbox to mark it.
 
-  mermaid
+mermaid
 graph TD
     subgraph UI_Layer
         MainActivity --> Navigation
