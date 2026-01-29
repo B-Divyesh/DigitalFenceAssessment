@@ -1,6 +1,7 @@
 ## ShoppingListApp
 - A simple shopping list app, that allows you to add Shopping List Items.
 - Add Items, Delete Them, Mark them if purchased and edit them.
+- Uses MVVM architecture as well as the room database
 
 ## Instructions
 - To add an item press the + button on the bottom right, you may add the Item Name and quantity
