@@ -19,6 +19,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
@@ -27,6 +28,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.shoppinglistapp.data.shopList
 import kotlinx.coroutines.launch
+import android.widget.Toast
 
 @Composable
 fun AddEditDetailView(
@@ -34,8 +36,9 @@ fun AddEditDetailView(
     viewModel: shopListViewModel,
     navController: NavController
 ){
+    val context = LocalContext.current
     val scope = rememberCoroutineScope()
-    
+
     if (id != 0L){
         val item = viewModel.getAShopListById(id).collectAsState(initial = shopList(createdAt = 0L))
         item.value?.let {
@@ -102,10 +105,16 @@ fun AddEditDetailView(
                             )
                         )
                     }
+                    scope.launch {
+                        navController.navigateUp()
+                    }
+                } else {
+                    if(viewModel.shopListNameState.isEmpty()) {
+                        Toast.makeText(context, "Please enter a name", Toast.LENGTH_SHORT).show()
+
+                    }
                 }
-                scope.launch {
-                    navController.navigateUp()
-                }
+
 
             }){
                 Text(
