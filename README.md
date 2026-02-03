@@ -5,6 +5,7 @@
 
 ## Instructions
 - To add an item press the + button on the bottom right, you may add the Item Name and quantity
+- To increase quantity please press the - and + icons
 - To delete hold the item and swipe to any side
 - To edit an item simply click on the existing item
 - To Mark the item as purchesed you can tap on the chackbox to mark it.
@@ -41,6 +42,10 @@
 2. Easy to perform actions
 3. Timestamps: To check when the Item was added
 
+## Added Features
+1. Users can now increase or decrease quantity directly from home screen
+2. Bug Fixed: Users are no longer redirected to empty home screen on adding an empty list with no name
+
 ## Future Deliverables
 - Integrate Advanced sorting
 - Implement Folders, to organise lists into their own category
@@ -51,6 +56,12 @@
 ## Assumptions Made / Trade Offs
 - Accidental delete may be frequent due to the swipe to delete feature
 - We assume the user takes the most ideal gestures
+
+## Problems Faced
+- Understanding the fundamental concept of context and what is local context
+- The different types of Flow and what it means to update in real time autonomously
+- System level core libraries
+- Understanding how Navigation actually works and its relation to the view model
 
 ## IMPORTANT NOTE
 
